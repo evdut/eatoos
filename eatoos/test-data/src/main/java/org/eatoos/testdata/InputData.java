@@ -12,13 +12,15 @@ public class InputData {
     
     Map<String, Object> data;
     
-    public InputData(String filePath) throws FileNotFoundException {
+    @SuppressWarnings("unchecked")
+	public InputData(String filePath) throws FileNotFoundException {
         InputStream input = new FileInputStream(new File(filePath));
         Yaml yaml = new Yaml();
         data = (Map<String, Object>)yaml.load(input);
     }
 
-    public <E> E fetch(String key, Class<E> clazz) {
+    @SuppressWarnings("unchecked")
+	public <E> E fetch(String key, Class<E> clazz) {
         return (E)data.get(key);
     }
 }

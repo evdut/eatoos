@@ -1,11 +1,6 @@
 package org.eatoos.testdata;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-
-import org.yaml.snakeyaml.Yaml;
+import java.io.IOException;
 
 /**
  * Hello world!
@@ -13,10 +8,8 @@ import org.yaml.snakeyaml.Yaml;
  */
 public class TestData 
 {
-    public static void main( String[] args ) throws FileNotFoundException
+    public static void main( String[] args ) throws IOException
     {
-        InputStream input = new FileInputStream(new File("src/test/resources/reader/utf-8.txt"));
-        Yaml yaml = new Yaml();
-        Object data = yaml.load(input);
+        new Output(new InputData("src/main/resources/config.yaml")).generate("generated/");
     }
 }
